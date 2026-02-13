@@ -140,100 +140,67 @@ body {
   pointer-events: none;
 }
 
-/* Top names bar */
-.hero-top-bar {
+/* Top center content */
+.hero-content {
   position: absolute;
-  top: 3rem;
-  left: 3rem;
-  right: 3rem;
+  top: 3.5rem;
+  left: 0;
+  right: 0;
   z-index: 3;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  text-align: center;
 }
 
-/* Left name */
-.hero-name-left {
-  text-align: left;
-  opacity: 0;
-  animation: fadeInLeft 1.2s 0.8s forwards;
-}
-
-.hero-name-left .hero-label {
+.hero-pre {
   font-family: var(--font-sans);
-  font-size: 0.5rem;
+  font-size: 0.55rem;
   font-weight: 300;
   color: var(--sand);
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
-  display: block;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
 }
 
-.hero-name-left h1 {
+.hero-names-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+
+.hero-names-row h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
   font-weight: 300;
   color: var(--cream);
-  line-height: 1.05;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  line-height: 1;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 25px rgba(0,0,0,0.6);
 }
 
-/* Center date */
-.hero-center {
-  text-align: center;
-  opacity: 0;
-  animation: fadeUp 1s 1.3s forwards;
-  padding-top: 0.5rem;
-}
-
-.hero-and {
+.hero-names-row .hero-amp {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--sand);
   text-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
 
 .hero-date {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: 300;
   color: rgba(250,246,240,0.5);
-  letter-spacing: 4px;
-  margin-top: 0.4rem;
+  letter-spacing: 5px;
+  margin-top: 1rem;
   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-
-/* Right name */
-.hero-name-right {
-  text-align: right;
   opacity: 0;
-  animation: fadeInRight 1.2s 1s forwards;
-}
-
-.hero-name-right .hero-label {
-  font-family: var(--font-sans);
-  font-size: 0.5rem;
-  font-weight: 300;
-  color: var(--sand);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-  display: block;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
-}
-
-.hero-name-right h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.05;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  animation: fadeUp 1s 1.2s forwards;
 }
 
 .scroll-hint {
@@ -265,15 +232,6 @@ body {
   animation: bounceDown 2.5s infinite;
 }
 
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-25px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(25px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
 
 /* ========== Falling Petals ========== */
 .petal {
@@ -856,9 +814,9 @@ section, .full-section {
 @media (max-width: 768px) {
   .hero-bg img { object-position: center 35%; }
   .hero-frame { inset: 0.8rem; }
-  .hero-top-bar { left: 1.2rem; right: 1.2rem; top: 2rem; }
-  .hero-name-left h1,
-  .hero-name-right h1 { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+  .hero-content { top: 2.5rem; }
+  .hero-names-row h1 { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+  .hero-names-row .hero-amp { font-size: 1rem; }
   .nav { gap: 1.2rem; padding: 1rem 0.8rem; }
   .nav a { font-size: 0.6rem; letter-spacing: 2px; }
 
@@ -923,19 +881,14 @@ section, .full-section {
   <div class="hero-overlay"></div>
   <div class="hero-frame"></div>
 
-  <div class="hero-top-bar">
-    <div class="hero-name-left">
-      <span class="hero-label">Groom</span>
+  <div class="hero-content">
+    <p class="hero-pre">We're Getting Married</p>
+    <div class="hero-names-row">
       <h1>Chun Hou</h1>
-    </div>
-    <div class="hero-center">
-      <p class="hero-and">&amp;</p>
-      <p class="hero-date">26 . 09 . 2026</p>
-    </div>
-    <div class="hero-name-right">
-      <span class="hero-label">Bride</span>
+      <span class="hero-amp">&amp;</span>
       <h1>Xiao Wei</h1>
     </div>
+    <p class="hero-date">26 . 09 . 2026</p>
   </div>
 
   <div class="scroll-hint">
