@@ -107,7 +107,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 35%;
   opacity: 0;
   animation: heroImgIn 2s 0.2s forwards;
 }
@@ -117,23 +117,18 @@ body {
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* Overlay — edges darker, center clear for couple */
+/* Overlay — top heavier for text readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(to right,
-      rgba(26,20,16,0.7) 0%,
-      rgba(26,20,16,0.15) 35%,
-      rgba(26,20,16,0.05) 50%,
-      rgba(26,20,16,0.15) 65%,
-      rgba(26,20,16,0.7) 100%),
     linear-gradient(to bottom,
-      rgba(26,20,16,0.2) 0%,
-      transparent 30%,
-      transparent 70%,
-      rgba(26,20,16,0.5) 100%);
+      rgba(26,20,16,0.8) 0%,
+      rgba(26,20,16,0.5) 18%,
+      rgba(26,20,16,0.05) 40%,
+      rgba(26,20,16,0.0) 60%,
+      rgba(26,20,16,0.25) 100%);
 }
 
 /* Thin gold frame */
@@ -145,13 +140,20 @@ body {
   pointer-events: none;
 }
 
+/* Top names bar */
+.hero-top-bar {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  right: 3rem;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 /* Left name */
 .hero-name-left {
-  position: absolute;
-  left: 3.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
   text-align: left;
   opacity: 0;
   animation: fadeInLeft 1.2s 0.8s forwards;
@@ -159,90 +161,84 @@ body {
 
 .hero-name-left .hero-label {
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 300;
   color: var(--sand);
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.3rem;
   display: block;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
 .hero-name-left h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 300;
   color: var(--cream);
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: 2px;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.5);
-  writing-mode: horizontal-tb;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
-/* Right name */
-.hero-name-right {
-  position: absolute;
-  right: 3.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  text-align: right;
-  opacity: 0;
-  animation: fadeInRight 1.2s 1.1s forwards;
-}
-
-.hero-name-right .hero-label {
-  font-family: var(--font-sans);
-  font-size: 0.55rem;
-  font-weight: 300;
-  color: var(--sand);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-  display: block;
-}
-
-.hero-name-right h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.1;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.5);
-}
-
-/* Bottom center info */
-.hero-bottom {
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+/* Center date */
+.hero-center {
   text-align: center;
   opacity: 0;
-  animation: fadeUp 1s 1.5s forwards;
+  animation: fadeUp 1s 1.3s forwards;
+  padding-top: 0.5rem;
 }
 
 .hero-and {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--sand);
-  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
 
 .hero-date {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 300;
-  color: rgba(250,246,240,0.55);
-  letter-spacing: 5px;
+  color: rgba(250,246,240,0.5);
+  letter-spacing: 4px;
+  margin-top: 0.4rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+/* Right name */
+.hero-name-right {
+  text-align: right;
+  opacity: 0;
+  animation: fadeInRight 1.2s 1s forwards;
+}
+
+.hero-name-right .hero-label {
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  font-weight: 300;
+  color: var(--sand);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+.hero-name-right h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .scroll-hint {
   position: absolute;
-  bottom: 1.2rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -270,13 +266,13 @@ body {
 }
 
 @keyframes fadeInLeft {
-  from { opacity: 0; transform: translateY(-50%) translateX(-30px); }
-  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+  from { opacity: 0; transform: translateX(-25px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateY(-50%) translateX(30px); }
-  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+  from { opacity: 0; transform: translateX(25px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 /* ========== Falling Petals ========== */
@@ -860,10 +856,9 @@ section, .full-section {
 @media (max-width: 768px) {
   .hero-bg img { object-position: center 35%; }
   .hero-frame { inset: 0.8rem; }
-  .hero-name-left { left: 1.5rem; }
-  .hero-name-right { right: 1.5rem; }
+  .hero-top-bar { left: 1.2rem; right: 1.2rem; top: 2rem; }
   .hero-name-left h1,
-  .hero-name-right h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+  .hero-name-right h1 { font-size: clamp(1.4rem, 5.5vw, 2rem); }
   .nav { gap: 1.2rem; padding: 1rem 0.8rem; }
   .nav a { font-size: 0.6rem; letter-spacing: 2px; }
 
@@ -928,19 +923,19 @@ section, .full-section {
   <div class="hero-overlay"></div>
   <div class="hero-frame"></div>
 
-  <div class="hero-name-left">
-    <span class="hero-label">Groom</span>
-    <h1>Chun<br>Hou</h1>
-  </div>
-
-  <div class="hero-name-right">
-    <span class="hero-label">Bride</span>
-    <h1>Xiao<br>Wei</h1>
-  </div>
-
-  <div class="hero-bottom">
-    <p class="hero-and">and</p>
-    <p class="hero-date">September 26, 2026</p>
+  <div class="hero-top-bar">
+    <div class="hero-name-left">
+      <span class="hero-label">Groom</span>
+      <h1>Chun Hou</h1>
+    </div>
+    <div class="hero-center">
+      <p class="hero-and">&amp;</p>
+      <p class="hero-date">26 . 09 . 2026</p>
+    </div>
+    <div class="hero-name-right">
+      <span class="hero-label">Bride</span>
+      <h1>Xiao Wei</h1>
+    </div>
   </div>
 
   <div class="scroll-hint">
