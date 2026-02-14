@@ -1525,28 +1525,30 @@ section, .full-section {
   window.addEventListener('pagehide', pauseMusic);
 
   // ========== Falling Petals ==========
+  var petalCount = 0;
+  var MAX_PETALS = 8;
+  var petalColors = ['#C4A882', '#D4C4A8', '#B8805A', '#C9B99A', '#A89278'];
+
   function createPetal() {
-    const p = document.createElement('div');
+    if (petalCount >= MAX_PETALS || document.hidden) return;
+    petalCount++;
+    var p = document.createElement('div');
     p.className = 'petal';
     p.innerHTML = '<div class="petal-leaf"></div>';
     p.style.left = Math.random() * 100 + 'vw';
-    const size = Math.random() * 10 + 12;
-    const leaf = p.querySelector('.petal-leaf');
+    var size = Math.random() * 10 + 12;
+    var leaf = p.querySelector('.petal-leaf');
     leaf.style.width = size + 'px';
     leaf.style.height = (size * 1.4) + 'px';
-
-    // Vary petal colors within earth tone range
-    const colors = ['#C4A882', '#D4C4A8', '#B8805A', '#C9B99A', '#A89278'];
-    leaf.style.background = colors[Math.floor(Math.random() * colors.length)];
+    leaf.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
     leaf.style.opacity = (Math.random() * 0.3 + 0.4).toFixed(2);
-
     p.style.animationDuration = (Math.random() * 5 + 7) + 's';
     document.body.appendChild(p);
-    p.addEventListener('animationend', () => p.remove());
+    p.addEventListener('animationend', () => { p.remove(); petalCount--; });
   }
 
-  setInterval(createPetal, 1800);
-  for (let i = 0; i < 6; i++) setTimeout(createPetal, i * 400);
+  setInterval(createPetal, 3000);
+  for (var i = 0; i < 4; i++) setTimeout(createPetal, i * 500);
 
   // ========== RSVP ==========
   const rsvpForm = document.getElementById('rsvpForm');
