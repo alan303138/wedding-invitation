@@ -1511,6 +1511,15 @@ section, .full-section {
     playing = !playing;
   });
 
+  // Pause music when page is hidden (screen lock / tab switch)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && playing) {
+      bgMusic.pause();
+    } else if (!document.hidden && playing) {
+      bgMusic.play().catch(() => {});
+    }
+  });
+
   // ========== Falling Petals ==========
   function createPetal() {
     const p = document.createElement('div');
