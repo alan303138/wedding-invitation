@@ -1512,13 +1512,17 @@ section, .full-section {
   });
 
   // Pause music when page is hidden (screen lock / tab switch)
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && playing) {
+  function pauseMusic() {
+    if (playing) {
       bgMusic.pause();
-    } else if (!document.hidden && playing) {
-      bgMusic.play().catch(() => {});
+      musicIcon.querySelector('path').setAttribute('d', playPath);
+      musicBtn.classList.remove('playing');
+      playing = false;
     }
-  });
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pauseMusic(); });
+  window.addEventListener('blur', pauseMusic);
+  window.addEventListener('pagehide', pauseMusic);
 
   // ========== Falling Petals ==========
   function createPetal() {
