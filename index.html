@@ -1486,12 +1486,16 @@ section, .full-section {
     }
   }
 
-  // Auto-play on first scroll
-  function onFirstScroll() {
+  // Auto-play on first user interaction
+  function onFirstInteraction() {
     startMusic();
-    window.removeEventListener('scroll', onFirstScroll);
+    ['touchstart', 'mousedown', 'keydown'].forEach(evt =>
+      document.removeEventListener(evt, onFirstInteraction)
+    );
   }
-  window.addEventListener('scroll', onFirstScroll, { passive: true });
+  ['touchstart', 'mousedown', 'keydown'].forEach(evt =>
+    document.addEventListener(evt, onFirstInteraction, { once: false, passive: true })
+  );
 
   musicBtn.addEventListener('click', () => {
     if (playing) {
