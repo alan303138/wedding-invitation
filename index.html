@@ -1486,43 +1486,50 @@ section, .full-section {
     }
   }
 
-  // Auto-play on first user interaction
-  var interactionEvents = ['touchstart', 'mousedown', 'keydown', 'wheel'];
+  // Auto-play on first user interaction (click/touch/key are valid user activations)
+  var userActivated = false;
   function onFirstInteraction() {
+    if (userActivated) return;
+    userActivated = true;
     startMusic();
-    interactionEvents.forEach(evt =>
+    ['click', 'touchend', 'pointerup', 'keydown'].forEach(evt =>
       document.removeEventListener(evt, onFirstInteraction)
     );
   }
-  interactionEvents.forEach(evt =>
+  ['click', 'touchend', 'pointerup', 'keydown'].forEach(evt =>
     document.addEventListener(evt, onFirstInteraction, { passive: true })
   );
 
-  musicBtn.addEventListener('click', () => {
-    if (playing) {
-      bgMusic.pause();
-      musicIcon.querySelector('path').setAttribute('d', playPath);
-      musicBtn.classList.remove('playing');
-    } else {
-      bgMusic.play().catch(() => {});
-      musicIcon.querySelector('path').setAttribute('d', mutePath);
-      musicBtn.classList.add('playing');
-    }
-    playing = !playing;
-  });
-
-  // Pause music when page is hidden (screen lock / tab switch)
-  function pauseMusic() {
+  // Manual toggle via music button
+  var manualOff = false;
+  musicBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (playing) {
       bgMusic.pause();
       musicIcon.querySelector('path').setAttribute('d', playPath);
       musicBtn.classList.remove('playing');
       playing = false;
+      manualOff = true;
+    } else {
+      bgMusic.play().catch(() => {});
+      musicIcon.querySelector('path').setAttribute('d', mutePath);
+      musicBtn.classList.add('playing');
+      playing = true;
+      manualOff = false;
     }
-  }
-  document.addEventListener('visibilitychange', () => { if (document.hidden) pauseMusic(); });
-  window.addEventListener('blur', pauseMusic);
-  window.addEventListener('pagehide', pauseMusic);
+  });
+
+  // Pause when hidden, resume when back (unless manually turned off)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && playing) {
+      bgMusic.pause();
+    } else if (!document.hidden && !manualOff && userActivated) {
+      bgMusic.play().catch(() => {});
+      musicIcon.querySelector('path').setAttribute('d', mutePath);
+      musicBtn.classList.add('playing');
+      playing = true;
+    }
+  });
 
   // ========== Falling Petals ==========
   var petalCount = 0;
