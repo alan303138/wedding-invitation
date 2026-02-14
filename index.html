@@ -1487,14 +1487,15 @@ section, .full-section {
   }
 
   // Auto-play on first user interaction
+  var interactionEvents = ['touchstart', 'mousedown', 'keydown', 'wheel'];
   function onFirstInteraction() {
     startMusic();
-    ['touchstart', 'mousedown', 'keydown'].forEach(evt =>
+    interactionEvents.forEach(evt =>
       document.removeEventListener(evt, onFirstInteraction)
     );
   }
-  ['touchstart', 'mousedown', 'keydown'].forEach(evt =>
-    document.addEventListener(evt, onFirstInteraction, { once: false, passive: true })
+  interactionEvents.forEach(evt =>
+    document.addEventListener(evt, onFirstInteraction, { passive: true })
   );
 
   musicBtn.addEventListener('click', () => {
