@@ -327,12 +327,12 @@ section, .full-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 90px;
+  min-width: 60px;
 }
 
 .countdown-number {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 300;
   color: var(--cream);
   line-height: 1;
@@ -775,6 +775,7 @@ section, .full-section {
 
 .rsvp-attendance {
   display: flex;
+  align-items: stretch;
   gap: 1rem;
   margin-bottom: 1.8rem;
 }
@@ -795,6 +796,7 @@ section, .full-section {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   padding: 1rem;
   font-family: var(--font-sans);
   font-size: 0.9rem;
@@ -1047,8 +1049,8 @@ section, .full-section {
 
 @media (max-width: 480px) {
   .hero-names { letter-spacing: 1px; }
-  .countdown-number { font-size: 2.2rem; }
-  .countdown-item { min-width: 65px; }
+  .countdown-number { font-size: 1.5rem; }
+  .countdown-item { min-width: 50px; }
   .carousel-track { height: 280px; }
   .nav { gap: 0.8rem; }
   .nav a { letter-spacing: 1px; }
@@ -1286,7 +1288,6 @@ section, .full-section {
 <div class="closing-section full-section">
   <div class="reveal">
     <p class="section-label">With Love</p>
-    <p class="closing-quote">"Whatever our souls are made of, his and mine are the same."</p>
     <p class="closing-names">Chun Hou &amp; Xiao Wei</p>
   </div>
 </div>
