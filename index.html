@@ -685,6 +685,29 @@ section, .full-section {
   border: 0;
 }
 
+.map-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  justify-content: center;
+}
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--sand);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--brown);
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+.map-btn:hover { background: var(--sand); color: var(--brown-deep); }
+
 /* ========== RSVP ========== */
 .rsvp-section {
   background: var(--warm-white);
@@ -1040,8 +1063,6 @@ section, .full-section {
 <nav class="nav" id="nav">
   <a href="#hero">Home</a>
   <a href="#countdown">Date</a>
-  <a href="#story">Story</a>
-  <a href="#gallery">Gallery</a>
   <a href="#info">Details</a>
   <a href="#rsvp">RSVP</a>
 </nav>
@@ -1100,92 +1121,6 @@ section, .full-section {
   </div>
 </div>
 
-<!-- Love Story Timeline -->
-<section class="timeline-section" id="story">
-  <div class="reveal">
-    <p class="section-label">Our Journey</p>
-    <h2 class="section-title">How It All Began</h2>
-    <p class="section-sub">A love story written in the stars</p>
-    <div class="section-divider"></div>
-  </div>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2019</p>
-      <h3 class="timeline-event">First Encounter</h3>
-      <p class="timeline-desc">A chance meeting at a mutual friend's gathering. One glance was all it took for the universe to set its plan in motion.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2020</p>
-      <h3 class="timeline-event">First Date</h3>
-      <p class="timeline-desc">Countless late-night conversations finally led to a coffee date that lasted well past midnight. We knew this was something special.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2022</p>
-      <h3 class="timeline-event">Traveling Together</h3>
-      <p class="timeline-desc">Our first trip abroad together. Walking through snowy landscapes and autumn leaves, we promised to always explore the world side by side.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2024</p>
-      <h3 class="timeline-event">Moving In</h3>
-      <p class="timeline-desc">We built our little home together. Every meal, every morning, every quiet evening became the sweetest part of our day.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2025</p>
-      <h3 class="timeline-event">The Proposal</h3>
-      <p class="timeline-desc">Under a sky full of stars, he got down on one knee. Through happy tears, she whispered the most beautiful word: "Yes."</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-year">2026.09.26</p>
-      <h3 class="timeline-event">Forever Begins</h3>
-      <p class="timeline-desc">We invite you to witness the beginning of our forever. Come celebrate love, joy, and the start of our new chapter together.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Photo Gallery -->
-<div class="gallery-section full-section" id="gallery">
-  <div class="reveal">
-    <p class="section-label">Gallery</p>
-    <h2 class="section-title" style="color:var(--cream)">Our Moments</h2>
-    <p class="section-sub" style="color:rgba(250,246,240,0.4)">Snapshots of our journey together</p>
-  </div>
-
-  <div class="carousel reveal">
-    <div class="carousel-track">
-      <div class="carousel-slide active">
-        <img src="photo/LINE_ALBUM_2026.2.13_260213_4.jpg" alt="Chun Hou and Xiao Wei">
-        <span class="photo-meta">2048 &times; 1365</span>
-      </div>
-      <div class="carousel-slide">
-        <img src="photo/LINE_ALBUM_2026.2.13_260213_2.jpg" alt="Chun Hou and Xiao Wei">
-        <span class="photo-meta">1364 &times; 2048</span>
-      </div>
-      <div class="carousel-slide">
-        <img src="photo/LINE_ALBUM_2026.2.13_260213_3.jpg" alt="Chun Hou and Xiao Wei">
-        <span class="photo-meta">1600 &times; 1066</span>
-      </div>
-      <div class="carousel-slide">
-        <img src="photo/587617756_25868064982781786_2113194782718377789_n.jpg" alt="Ring photo with Mt. Fuji">
-        <span class="photo-meta">1080 &times; 1080</span>
-      </div>
-    </div>
-    <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
-    <button class="carousel-btn next" aria-label="Next">&#8250;</button>
-    <div class="carousel-dots">
-      <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
-      <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
-      <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
-      <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
-    </div>
-  </div>
-</div>
 
 <!-- Wedding Info -->
 <section class="info-section" id="info">
@@ -1205,18 +1140,14 @@ section, .full-section {
     <div class="info-card reveal">
       <span class="info-icon">&#9200;</span>
       <h3>Time</h3>
-      <p>Reception: 11:30 AM<br>Ceremony: 12:00 PM<br>Luncheon: 12:30 PM</p>
+      <p>Reception: 6:00 PM<br>Dinner: 7:00 PM</p>
     </div>
     <div class="info-card reveal">
       <span class="info-icon">&#127970;</span>
       <h3>Venue</h3>
       <p>W in the Sky, Skydeck B<br>Bloomsvale Shopping Gallery<br>Jalan Puchong, 58200<br>Kuala Lumpur, Malaysia</p>
     </div>
-    <div class="info-card reveal">
-      <span class="info-icon">&#128652;</span>
-      <h3>Getting There</h3>
-      <p>Located along Jalan Puchong<br>Parking available on-site<br>Accessible via LRT &amp; Grab</p>
-    </div>
+
     <div class="info-card info-card-cal reveal">
       <div class="mini-cal">
         <div class="mini-cal-header">
@@ -1277,6 +1208,16 @@ section, .full-section {
       title="Bloomsvale Shopping Gallery">
     </iframe>
   </div>
+  <div class="map-btns reveal">
+    <a class="map-btn" href="https://maps.google.com/?q=Bloomsvale+Shopping+Gallery,+Jalan+Puchong,+Kuala+Lumpur" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+      Google Maps
+    </a>
+    <a class="map-btn" href="https://waze.com/ul?q=Bloomsvale+Shopping+Gallery+Kuala+Lumpur" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10.9.1C4.9.7 0 5.8 0 12c0 4.7 2.7 8.9 6.8 11 .9.5 1.2 1.6.7 2.5l-1 1.8 2-.5c.4-.1.8 0 1.2.2 1.1.5 2.2.8 3.3.8 7.7 0 14-5.8 14-13S20.6-.6 10.9.1zm2.1 5.9c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 9.3c-.7 2-2.5 3.3-4.6 3.5h-.8c-2.1-.2-3.9-1.5-4.6-3.5-.2-.5.1-1 .6-1.2.5-.2 1 .1 1.2.6.4 1.2 1.5 2 2.9 2.1h.6c1.4-.1 2.5-.9 2.9-2.1.2-.5.7-.8 1.2-.6.5.2.8.7.6 1.2z"/></svg>
+      Waze
+    </a>
+  </div>
 </section>
 
 <!-- RSVP -->
@@ -1295,12 +1236,14 @@ section, .full-section {
     </div>
 
     <div class="rsvp-field">
-      <label for="rsvpEmail">Email</label>
-      <input type="email" id="rsvpEmail" name="email" placeholder="your@email.com" required>
+      <label for="rsvpEmail">Contact Number</label>
+      <input type="tel" id="rsvpEmail" name="contact" placeholder="+60 12-345 6789" required>
     </div>
 
     <div>
-      <label style="display:block;font-family:var(--font-sans);font-size:0.8rem;font-weight:300;color:var(--brown);letter-spacing:3px;text-transform:uppercase;margin-bottom:0.5rem;">Attendance</label>
+      <div class="rsvp-field">
+        <label>Attendance</label>
+      </div>
       <div class="rsvp-attendance">
         <div class="rsvp-radio">
           <input type="radio" id="attendYes" name="attending" value="yes" required checked>
@@ -1325,7 +1268,7 @@ section, .full-section {
     </div>
 
     <div class="rsvp-field">
-      <label for="rsvpMessage">Message to the Couple</label>
+      <label for="rsvpMessage">Message to the Couple / Remarks</label>
       <textarea id="rsvpMessage" name="message" placeholder="Share your wishes..."></textarea>
     </div>
 
@@ -1373,7 +1316,7 @@ section, .full-section {
   'use strict';
 
   // ========== Wedding Date ==========
-  const WEDDING_DATE = new Date('2026-09-26T12:00:00+08:00');
+  const WEDDING_DATE = new Date('2026-09-26T18:00:00+08:00');
 
   // ========== Nav Scroll ==========
   const nav = document.getElementById('nav');
