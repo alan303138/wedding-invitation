@@ -17,7 +17,7 @@
   --taupe: #8B7D6B;
   --sand: #C4A882;
   --tan: #D4C4A8;
-  --cream: #FAF6F0;
+  --cream: #F5F0DC;
   --warm-white: #FFF9F2;
   --terracotta: #B8805A;
   --blush: #E8D5C4;
@@ -192,8 +192,8 @@ body {
 }
 
 .hero-date {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
   font-weight: 300;
   color: rgba(250,246,240,0.5);
   letter-spacing: 5px;
@@ -727,7 +727,7 @@ section, .full-section {
 .rsvp-field label {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--brown);
   letter-spacing: 3px;
@@ -743,7 +743,7 @@ section, .full-section {
   width: 100%;
   padding: 0.9rem 1rem;
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 300;
   color: var(--brown-deep);
   background: var(--cream);
@@ -800,7 +800,7 @@ section, .full-section {
   height: 100%;
   padding: 1rem;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -995,6 +995,21 @@ section, .full-section {
   transform: translateY(0);
 }
 
+/* ========== Language Toggle ========== */
+.lang-btn {
+  background: none;
+  border: 1px solid rgba(196,168,130,0.5);
+  color: var(--sand);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s, color 0.3s;
+}
+.lang-btn:hover { background: var(--sand); color: var(--brown-deep); }
+
 /* ========== Keyframes ========== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -1064,10 +1079,11 @@ section, .full-section {
 
 <!-- Navigation -->
 <nav class="nav" id="nav">
-  <a href="#hero">Home</a>
-  <a href="#countdown">Date</a>
-  <a href="#info">Details</a>
-  <a href="#rsvp">RSVP</a>
+  <a href="#hero" data-en="Home" data-zh="主頁">Home</a>
+  <a href="#countdown" data-en="Date" data-zh="日期">Date</a>
+  <a href="#info" data-en="Details" data-zh="詳情">Details</a>
+  <a href="#rsvp" data-en="RSVP" data-zh="出席回覆">RSVP</a>
+  <button class="lang-btn" id="langToggle">中文</button>
 </nav>
 
 <!-- Hero Section -->
@@ -1079,7 +1095,7 @@ section, .full-section {
   <div class="hero-frame"></div>
 
   <div class="hero-content">
-    <p class="hero-pre">We're Getting Married</p>
+    <p class="hero-pre" data-en="We're Getting Married" data-zh="我們即將步入婚姻殿堂">We're Getting Married</p>
     <div class="hero-names-row">
       <h1>Xiao Wei</h1>
       <span class="hero-amp">&amp;</span>
@@ -1097,29 +1113,29 @@ section, .full-section {
 <!-- Countdown Section -->
 <div class="countdown-section full-section" id="countdown">
   <div class="reveal">
-    <p class="section-label">Save the Date</p>
-    <h2 class="section-title" style="color:var(--cream)">Counting the Days</h2>
-    <p class="section-sub" style="color:rgba(250,246,240,0.4)">Until we say "I do"</p>
+    <p class="section-label" data-en="Save the Date" data-zh="記住這天">Save the Date</p>
+    <h2 class="section-title" style="color:var(--cream)" data-en="Counting the Days" data-zh="倒數計時">Counting the Days</h2>
+    <p class="section-sub" style="color:rgba(250,246,240,0.4)" data-en='Until we say "I do"' data-zh="直到我們說「我願意」">Until we say "I do"</p>
   </div>
   <div class="countdown reveal" id="countdownTimer">
     <div class="countdown-item">
       <span class="countdown-number" id="days">000</span>
-      <span class="countdown-unit">Days</span>
+      <span class="countdown-unit" data-en="Days" data-zh="天">Days</span>
     </div>
     <span class="countdown-sep">:</span>
     <div class="countdown-item">
       <span class="countdown-number" id="hours">00</span>
-      <span class="countdown-unit">Hours</span>
+      <span class="countdown-unit" data-en="Hours" data-zh="時">Hours</span>
     </div>
     <span class="countdown-sep">:</span>
     <div class="countdown-item">
       <span class="countdown-number" id="minutes">00</span>
-      <span class="countdown-unit">Minutes</span>
+      <span class="countdown-unit" data-en="Minutes" data-zh="分">Minutes</span>
     </div>
     <span class="countdown-sep">:</span>
     <div class="countdown-item">
       <span class="countdown-number" id="seconds">00</span>
-      <span class="countdown-unit">Seconds</span>
+      <span class="countdown-unit" data-en="Seconds" data-zh="秒">Seconds</span>
     </div>
   </div>
 </div>
@@ -1128,27 +1144,27 @@ section, .full-section {
 <!-- Wedding Info -->
 <section class="info-section" id="info">
   <div class="reveal">
-    <p class="section-label">Details</p>
-    <h2 class="section-title">Wedding Information</h2>
-    <p class="section-sub">Everything you need to know</p>
+    <p class="section-label" data-en="Details" data-zh="詳情">Details</p>
+    <h2 class="section-title" data-en="Wedding Information" data-zh="婚禮資訊">Wedding Information</h2>
+    <p class="section-sub" data-en="Everything you need to know" data-zh="您需要知道的一切">Everything you need to know</p>
     <div class="section-divider"></div>
   </div>
 
   <div class="info-grid">
     <div class="info-card reveal">
       <span class="info-icon">&#128197;</span>
-      <h3>Date</h3>
-      <p>Saturday, September 26, 2026</p>
+      <h3 data-en="Date" data-zh="日期">Date</h3>
+      <p data-en="Saturday, September 26, 2026" data-zh="2026年9月26日（星期六）">Saturday, September 26, 2026</p>
     </div>
     <div class="info-card reveal">
       <span class="info-icon">&#9200;</span>
-      <h3>Time</h3>
-      <p>Reception: 6:00 PM<br>Dinner: 7:00 PM</p>
+      <h3 data-en="Time" data-zh="時間">Time</h3>
+      <p data-en="Reception: 6:00 PM<br>Dinner: 7:00 PM" data-zh="迎賓：下午6時<br>晚宴：下午7時">Reception: 6:00 PM<br>Dinner: 7:00 PM</p>
     </div>
     <div class="info-card reveal">
       <span class="info-icon">&#127970;</span>
-      <h3>Venue</h3>
-      <p>W in the Sky, Skydeck B<br>Bloomsvale Shopping Gallery<br>Jalan Puchong, 58200<br>Kuala Lumpur, Malaysia</p>
+      <h3 data-en="Venue" data-zh="地點">Venue</h3>
+      <p data-en="W in the Sky, Skydeck B<br>Bloomsvale Shopping Gallery<br>Jalan Puchong, 58200<br>Kuala Lumpur, Malaysia" data-zh="W in the Sky, Skydeck B<br>Bloomsvale購物廊<br>Jalan Puchong, 58200<br>吉隆坡，馬來西亞">W in the Sky, Skydeck B<br>Bloomsvale Shopping Gallery<br>Jalan Puchong, 58200<br>Kuala Lumpur, Malaysia</p>
     </div>
 
     <div class="info-card info-card-cal reveal">
@@ -1226,41 +1242,41 @@ section, .full-section {
 <!-- RSVP -->
 <section class="rsvp-section" id="rsvp">
   <div class="reveal">
-    <p class="section-label">Respond</p>
+    <p class="section-label" data-en="Respond" data-zh="回覆">Respond</p>
     <h2 class="section-title">RSVP</h2>
-    <p class="section-sub">Kindly let us know if you can make it</p>
+    <p class="section-sub" data-en="Kindly let us know if you can make it" data-zh="請告知您是否能出席">Kindly let us know if you can make it</p>
     <div class="section-divider"></div>
   </div>
 
   <form class="rsvp-form reveal" id="rsvpForm" autocomplete="off">
     <div class="rsvp-field">
-      <label for="rsvpName">Your Name</label>
-      <input type="text" id="rsvpName" name="name" placeholder="Full name" required>
+      <label for="rsvpName" data-en="Your Name" data-zh="您的姓名">Your Name</label>
+      <input type="text" id="rsvpName" name="name" placeholder="Full name" data-ph-en="Full name" data-ph-zh="全名" required>
     </div>
 
     <div class="rsvp-field">
-      <label for="rsvpEmail">Contact Number</label>
-      <input type="tel" id="rsvpEmail" name="contact" placeholder="+60 12-345 6789" required>
+      <label for="rsvpEmail" data-en="Contact Number" data-zh="聯絡號碼">Contact Number</label>
+      <input type="tel" id="rsvpEmail" name="contact" placeholder="+60 12-345 6789" data-ph-en="+60 12-345 6789" data-ph-zh="+60 12-345 6789" required>
     </div>
 
     <div>
       <div class="rsvp-field">
-        <label>Attendance</label>
+        <label data-en="Attendance" data-zh="出席情況">Attendance</label>
       </div>
       <div class="rsvp-attendance">
         <div class="rsvp-radio">
           <input type="radio" id="attendYes" name="attending" value="yes" required checked>
-          <label for="attendYes">Joyfully Accept</label>
+          <label for="attendYes" data-en="Joyfully Accept" data-zh="歡喜出席">Joyfully Accept</label>
         </div>
         <div class="rsvp-radio">
           <input type="radio" id="attendNo" name="attending" value="no">
-          <label for="attendNo">Regretfully Decline</label>
+          <label for="attendNo" data-en="Regretfully Decline" data-zh="抱歉缺席">Regretfully Decline</label>
         </div>
       </div>
     </div>
 
     <div class="rsvp-field" id="guestsField">
-      <label for="rsvpGuests">Number of Guests</label>
+      <label for="rsvpGuests" data-en="Number of Guests" data-zh="出席人數">Number of Guests</label>
       <select id="rsvpGuests" name="guests">
         <option value="1">1</option>
         <option value="2" selected>2</option>
@@ -1271,24 +1287,24 @@ section, .full-section {
     </div>
 
     <div class="rsvp-field">
-      <label for="rsvpMessage">Message to the Couple / Remarks</label>
-      <textarea id="rsvpMessage" name="message" placeholder="Share your wishes..."></textarea>
+      <label for="rsvpMessage" data-en="Message to the Couple / Remarks" data-zh="給新人的話 / 備註">Message to the Couple / Remarks</label>
+      <textarea id="rsvpMessage" name="message" placeholder="Share your wishes..." data-ph-en="Share your wishes..." data-ph-zh="寫下您的祝福..."></textarea>
     </div>
 
-    <button type="submit" class="rsvp-submit">Send RSVP</button>
+    <button type="submit" class="rsvp-submit" data-en="Send RSVP" data-zh="提交回覆">Send RSVP</button>
   </form>
 
   <div class="rsvp-success" id="rsvpSuccess">
     <span class="rsvp-success-icon">&#10084;</span>
-    <h3>Thank You!</h3>
-    <p>Your response has been received.<br>We can't wait to celebrate with you!</p>
+    <h3 data-en="Thank You!" data-zh="感謝您！">Thank You!</h3>
+    <p data-en="Your response has been received.<br>We can't wait to celebrate with you!" data-zh="已收到您的回覆。<br>期待與您共慶這美好時刻！">Your response has been received.<br>We can't wait to celebrate with you!</p>
   </div>
 </section>
 
 <!-- Closing Message -->
 <div class="closing-section full-section">
   <div class="reveal">
-    <p class="section-label">With Love</p>
+    <p class="section-label" data-en="With Love" data-zh="真誠祝福">With Love</p>
     <p class="closing-names">Chun Hou &amp; Xiao Wei</p>
   </div>
 </div>
@@ -1507,6 +1523,20 @@ section, .full-section {
   }
 
   attendRadios.forEach(r => r.addEventListener('change', toggleRsvpFields));
+
+  // Language toggle
+  let currentLang = 'en';
+  const langBtn = document.getElementById('langToggle');
+  langBtn.addEventListener('click', function() {
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    langBtn.textContent = currentLang === 'en' ? '中文' : 'EN';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + currentLang);
+    });
+    document.querySelectorAll('[data-ph-en]').forEach(el => {
+      el.placeholder = el.getAttribute('data-ph-' + currentLang);
+    });
+  });
 
   // TODO: Replace with your Google Apps Script Web App URL
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaj1d1xWVGfLFVS83jVILFrf2eW4iGgXmVcuV7CxnuPmAeL9v9CmeN9UAAA-32vLdh/exec';
