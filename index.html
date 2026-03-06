@@ -1235,11 +1235,12 @@ section, .full-section {
       </div>
       <div class="rsvp-attendance">
         <div class="rsvp-radio">
-          <input type="radio" id="attendYes" name="attending" value="yes" required checked>
+          <input type="radio" id="attendYes" name="attending" value="yes" required checked onchange="document.getElementById('rsvpGuests').disabled=false;document.getElementById('rsvpGuests').style.opacity='';">
           <label for="attendYes" data-en="Joyfully Accept" data-zh="我會出席">Joyfully Accept</label>
         </div>
         <div class="rsvp-radio">
-          <input type="radio" id="attendNo" name="attending" value="no">
+          <input type="radio" id="attendNo" name="attending" value="no" onchange="document.getElementById('rsvpGuests').disabled=true;document.getElementById('rsvpGuests').style.opacity='0.4';">
+
           <label for="attendNo" data-en="Regretfully Decline" data-zh="無法出席">Regretfully Decline</label>
         </div>
       </div>
@@ -1248,6 +1249,7 @@ section, .full-section {
     <div class="rsvp-field" id="guestsField">
       <label for="rsvpGuests" data-en="Number of Guests" data-zh="出席人數">Number of Guests</label>
       <select id="rsvpGuests" name="guests">
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2" selected>2</option>
         <option value="3">3</option>
@@ -1413,20 +1415,6 @@ section, .full-section {
   // ========== RSVP ==========
   const rsvpForm = document.getElementById('rsvpForm');
   const rsvpSuccess = document.getElementById('rsvpSuccess');
-  const guestsField = document.getElementById('guestsField');
-
-  function toggleRsvpFields() {
-    var val = document.querySelector('input[name="attending"]:checked');
-    if (val && val.value === 'no') {
-      guestsField.style.display = 'none';
-    } else {
-      guestsField.style.display = '';
-    }
-  }
-
-  document.getElementById('attendYes').onclick = toggleRsvpFields;
-  document.getElementById('attendNo').onclick = toggleRsvpFields;
-  toggleRsvpFields();
 
 
   // TODO: Replace with your Google Apps Script Web App URL
