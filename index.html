@@ -758,6 +758,9 @@ section, .full-section {
   -webkit-appearance: none;
 }
 
+.rsvp-field input::placeholder,
+.rsvp-field textarea::placeholder { color: rgba(255,255,255,0.6); }
+
 .rsvp-field input:focus,
 .rsvp-field select:focus,
 .rsvp-field textarea:focus {
@@ -808,7 +811,7 @@ section, .full-section {
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--brown);
+  color: #ffffff;
   background: var(--cream);
   border: 1px solid var(--light-gray);
   border-radius: 2px;
@@ -970,9 +973,13 @@ section, .full-section {
 
 /* ========== Language Toggle ========== */
 .lang-btn {
-  background: none;
-  border: 1px solid rgba(196,168,130,0.5);
-  color: var(--sand);
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 1001;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 2px;
@@ -981,7 +988,7 @@ section, .full-section {
   border-radius: 2px;
   transition: background 0.3s, color 0.3s;
 }
-.lang-btn:hover { background: var(--sand); color: var(--brown-deep); }
+.lang-btn:hover { background: rgba(255,255,255,0.2); }
 
 /* ========== Keyframes ========== */
 @keyframes fadeUp {
@@ -1056,8 +1063,8 @@ section, .full-section {
   <a href="#countdown" data-en="Date" data-zh="日期">Date</a>
   <a href="#info" data-en="Details" data-zh="詳情">Details</a>
   <a href="#rsvp" data-en="RSVP" data-zh="出席回覆">RSVP</a>
-  <button class="lang-btn" id="langToggle">中文</button>
 </nav>
+<button class="lang-btn" id="langToggle">中文</button>
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
