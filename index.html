@@ -1414,14 +1414,19 @@ section, .full-section {
   const rsvpForm = document.getElementById('rsvpForm');
   const rsvpSuccess = document.getElementById('rsvpSuccess');
   const guestsField = document.getElementById('guestsField');
-  const attendRadios = document.querySelectorAll('input[name="attending"]');
 
   function toggleRsvpFields() {
-    const declined = document.querySelector('input[name="attending"]:checked').value === 'no';
-    guestsField.style.display = declined ? 'none' : '';
+    var val = document.querySelector('input[name="attending"]:checked');
+    if (val && val.value === 'no') {
+      guestsField.style.display = 'none';
+    } else {
+      guestsField.style.display = '';
+    }
   }
 
-  attendRadios.forEach(r => r.addEventListener('change', toggleRsvpFields));
+  document.getElementById('attendYes').onclick = toggleRsvpFields;
+  document.getElementById('attendNo').onclick = toggleRsvpFields;
+  toggleRsvpFields();
 
 
   // TODO: Replace with your Google Apps Script Web App URL
