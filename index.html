@@ -1435,7 +1435,7 @@ section, .full-section {
 
 
   // TODO: Replace with your Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyb1ZCrb37UclTXU5AexH0uNw0Ib2kVpXkqCXejQhTW80he_YgWv0QmH1JxgGXs2dqiw/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrAaR9VVuVJczp3GD4GynPpEkjVtOtq-KWOMBHysmGAXxrwKDqgJbXU7ouy9vTtuFe4w/exec';
 
   rsvpForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1449,8 +1449,7 @@ section, .full-section {
     fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(data)
+      body: new URLSearchParams(data)
     })
     .then(() => {
       rsvpForm.style.display = 'none';
