@@ -1369,38 +1369,6 @@ section, .full-section {
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => revealObs.observe(el));
 
-  // ========== Carousel ==========
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  let cur = 0;
-  let autoTimer;
-
-  function goTo(i) {
-    slides[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
-    cur = (i + slides.length) % slides.length;
-    slides[cur].classList.add('active');
-    dots[cur].classList.add('active');
-  }
-
-  function startAuto() { autoTimer = setInterval(() => goTo(cur + 1), 5000); }
-  function resetAuto() { clearInterval(autoTimer); startAuto(); }
-
-  prevBtn.addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
-  nextBtn.addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
-  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); resetAuto(); }));
-  startAuto();
-
-  // Touch swipe
-  let touchX = 0;
-  const track = document.querySelector('.carousel-track');
-  track.addEventListener('touchstart', e => { touchX = e.changedTouches[0].screenX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const dx = touchX - e.changedTouches[0].screenX;
-    if (Math.abs(dx) > 50) { goTo(cur + (dx > 0 ? 1 : -1)); resetAuto(); }
-  }, { passive: true });
 
 
   // ========== Falling Petals ==========
