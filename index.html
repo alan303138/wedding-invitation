@@ -1247,6 +1247,22 @@ section, .full-section {
       </div>
     </div>
 
+    <div>
+      <div class="rsvp-field">
+        <label data-en="Guest of" data-zh="賓客身份">Guest of</label>
+      </div>
+      <div class="rsvp-attendance">
+        <div class="rsvp-radio">
+          <input type="radio" id="guestBride" name="guestOf" value="bride" required checked>
+          <label for="guestBride" data-en="Bride's Side" data-zh="新娘親友">Bride's Side</label>
+        </div>
+        <div class="rsvp-radio">
+          <input type="radio" id="guestGroom" name="guestOf" value="groom">
+          <label for="guestGroom" data-en="Groom's Side" data-zh="新郎親友">Groom's Side</label>
+        </div>
+      </div>
+    </div>
+
     <div class="rsvp-field" id="guestsField">
       <label for="rsvpGuests" data-en="Number of Guests" data-zh="出席人數">Number of Guests</label>
       <select id="rsvpGuests" name="guests">
@@ -1419,7 +1435,7 @@ section, .full-section {
 
 
   // TODO: Replace with your Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaj1d1xWVGfLFVS83jVILFrf2eW4iGgXmVcuV7CxnuPmAeL9v9CmeN9UAAA-32vLdh/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwn6fClQlcz-yPW3UHmMM22pEJY-7SkzDBfiMTWWto_URQ_-872zIwQmcBhLer-zhPsgg/exec';
 
   rsvpForm.addEventListener('submit', function(e) {
     e.preventDefault();
