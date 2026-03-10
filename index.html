@@ -31,7 +31,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   font-family: var(--font-sans);
-  background: var(--cream);
+  background: #ffffff;
   color: var(--brown-deep);
   overflow-x: hidden;
   line-height: 1.8;
@@ -40,7 +40,7 @@ body {
 
 /* ========== Scrollbar ========== */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-track { background: #ffffff; }
 ::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
 
 /* ========== Navigation ========== */
@@ -194,8 +194,8 @@ body {
 .hero-date {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 5.5vw, 4rem);
-  font-weight: 300;
-  color: rgba(250,246,240,0.5);
+  font-weight: 600;
+  color: #ffffff;
   letter-spacing: 5px;
   margin-top: 1rem;
   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
@@ -304,16 +304,34 @@ section, .full-section {
   margin: 0 auto 3rem;
 }
 
+/* ========== Message Section ========== */
+.message-section {
+  background: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.message-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--brown-deep);
+  font-weight: 500;
+  line-height: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
 /* ========== Countdown ========== */
 .countdown-section {
-  background: var(--brown-deep);
+  background: #ffffff;
   text-align: center;
   padding: 5rem 2rem;
 }
 
-.countdown-section .section-label { color: #ffffff; opacity: 0.7; }
-.countdown-section .section-title { color: #ffffff; }
-.countdown-section .section-sub { color: rgba(255,255,255,0.6); }
+.countdown-section .section-label { color: var(--terracotta); opacity: 1; }
+.countdown-section .section-title { color: var(--brown-deep); }
+.countdown-section .section-sub { color: var(--muted); }
 
 .countdown {
   display: flex;
@@ -334,7 +352,7 @@ section, .full-section {
   font-family: var(--font-serif);
   font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 300;
-  color: var(--cream);
+  color: var(--brown-deep);
   line-height: 1;
   transition: transform 0.3s;
 }
@@ -342,7 +360,7 @@ section, .full-section {
 .countdown-unit {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: var(--sand);
+  color: var(--brown-deep);
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-top: 0.5rem;
@@ -545,9 +563,9 @@ section, .full-section {
 
 /* ========== Wedding Info ========== */
 .info-section { text-align: center; }
-.info-section .section-label { color: #ffffff; }
-.info-section .section-title { color: #ffffff; }
-.info-section .section-sub { color: rgba(255,255,255,0.7); }
+.info-section .section-label { color: var(--terracotta); }
+.info-section .section-title { color: var(--brown-deep); }
+.info-section .section-sub { color: var(--muted); }
 
 .info-grid {
   display: grid;
@@ -558,7 +576,7 @@ section, .full-section {
 
 .info-card {
   padding: 2.5rem 2rem;
-  background: var(--warm-white);
+  background: #ffffff;
   border: 1px solid var(--light-gray);
   border-radius: 2px;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -699,22 +717,21 @@ section, .full-section {
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.4rem;
-  border: 1px solid var(--sand);
+  border: 1px solid var(--brown-deep);
   border-radius: 2px;
   font-family: var(--font-sans);
   font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--brown-deep);
   text-decoration: none;
   transition: background 0.3s, color 0.3s;
-  border-color: #ffffff;
 }
-.map-btn:hover { background: #ffffff; color: var(--brown-deep); }
+.map-btn:hover { background: var(--brown-deep); color: #ffffff; }
 
 /* ========== RSVP ========== */
 .rsvp-section {
-  background: var(--warm-white);
+  background: #ffffff;
   text-align: center;
 }
 
@@ -749,8 +766,8 @@ section, .full-section {
   font-family: var(--font-sans);
   font-size: 1.2rem;
   font-weight: 600;
-  color: #ffffff;
-  background: var(--cream);
+  color: var(--brown-deep);
+  background: #ffffff;
   border: 1px solid var(--light-gray);
   border-radius: 2px;
   outline: none;
@@ -759,7 +776,7 @@ section, .full-section {
 }
 
 .rsvp-field input::placeholder,
-.rsvp-field textarea::placeholder { color: rgba(255,255,255,0.6); }
+.rsvp-field textarea::placeholder { color: var(--muted); }
 
 .rsvp-field input:focus,
 .rsvp-field select:focus,
@@ -811,8 +828,8 @@ section, .full-section {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #ffffff;
-  background: var(--cream);
+  color: var(--brown-deep);
+  background: #ffffff;
   border: 1px solid var(--light-gray);
   border-radius: 2px;
   cursor: pointer;
@@ -891,19 +908,19 @@ section, .full-section {
 
 /* ========== Closing Message ========== */
 .closing-section {
-  background: var(--brown-deep);
+  background: #ffffff;
   text-align: center;
   padding: 6rem 2rem;
 }
 
-.closing-section .section-label { color: #ffffff; opacity: 0.7; font-weight: 700; }
+.closing-section .section-label { color: var(--terracotta); opacity: 1; font-weight: 700; }
 
 .closing-quote {
   font-family: var(--font-serif);
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 300;
   font-style: italic;
-  color: var(--cream);
+  color: var(--brown-deep);
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.7;
@@ -912,7 +929,7 @@ section, .full-section {
 .closing-names {
   font-family: var(--font-serif);
   font-size: 1.3rem;
-  color: #ffffff;
+  color: var(--brown-deep);
   font-weight: 700;
   letter-spacing: 3px;
 }
@@ -921,7 +938,7 @@ section, .full-section {
 .footer {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--cream);
+  background: #ffffff;
 }
 
 .footer-names {
@@ -1077,9 +1094,9 @@ section, .full-section {
 
   <div class="hero-content">
     <div class="hero-names-row">
-      <h1>Xiao Wei</h1>
+      <h1 data-en="Xiao Wei" data-zh="曉薇">Xiao Wei</h1>
       <span class="hero-amp">&amp;</span>
-      <h1>Chun Hou</h1>
+      <h1 data-en="Chun Hou" data-zh="俊浩">Chun Hou</h1>
     </div>
     <p class="hero-pre" data-en="We're Getting Married" data-zh="我們即將步入婚姻殿堂">We're Getting Married</p>
     <p class="hero-date">26 . 09 . 2026</p>
@@ -1090,6 +1107,13 @@ section, .full-section {
     <div class="scroll-arrow"></div>
   </div>
 </section>
+
+<!-- Message Section -->
+<div class="message-section full-section">
+  <div class="reveal">
+    <p class="message-text" data-en="We're getting married!&lt;br&gt;We hope you can join us on this special day and share in our joy.&lt;br&gt;We look forward to celebrating together with you!" data-zh="我們要結婚啦！&lt;br&gt;希望在這個特別的日子裡能和你一起分享我們的喜悅。&lt;br&gt;期待您的到來，和我們一起慶祝！">We're getting married!<br>We hope you can join us on this special day and share in our joy.<br>We look forward to celebrating together with you!</p>
+  </div>
+</div>
 
 <!-- Countdown Section -->
 <div class="countdown-section full-section" id="countdown">
@@ -1294,7 +1318,7 @@ section, .full-section {
 <div class="closing-section full-section">
   <div class="reveal">
     <p class="section-label" data-en="With Love" data-zh="真誠祝福">With Love</p>
-    <p class="closing-names">Xiao Wei &amp; Chun Hou</p>
+    <p class="closing-names" data-en="Xiao Wei &amp; Chun Hou" data-zh="曉薇 &amp; 俊浩">Xiao Wei &amp; Chun Hou</p>
   </div>
 </div>
 
