@@ -24,7 +24,7 @@
   --muted: #A89888;
   --light-gray: #EDE8E2;
   --font-serif: 'Cormorant Garamond', 'Lora', serif;
-  --font-sans: 'Josefin Sans', sans-serif;
+  --font-sans: 'Cormorant Garamond', 'Lora', serif;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -1008,6 +1008,25 @@ section, .full-section {
 }
 .lang-btn:hover { background: rgba(255,255,255,0.2); }
 
+/* ========== Music Toggle ========== */
+.music-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1.5rem;
+  z-index: 1001;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s, color 0.3s;
+}
+.music-btn:hover { background: rgba(255,255,255,0.2); }
+
 /* ========== Keyframes ========== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -1083,6 +1102,10 @@ section, .full-section {
   <a href="#rsvp" data-en="RSVP" data-zh="出席回覆">RSVP</a>
 </nav>
 <button class="lang-btn" id="langToggle">中文</button>
+<button class="music-btn" id="musicToggle">♪ MUSIC</button>
+<audio id="bgMusic" loop>
+  <source src="backgroud_music/hitslab-wedding-wedding-trailer-music-269139.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
@@ -1479,6 +1502,47 @@ section, .full-section {
       document.querySelectorAll('[data-ph-en]').forEach(function(el) {
         el.placeholder = el.getAttribute('data-ph-' + currentLang);
       });
+    });
+  })();
+</script>
+<script>
+  // Music — autoplay on first interaction, toggle button
+  (function() {
+    var music = document.getElementById('bgMusic');
+    var btn = document.getElementById('musicToggle');
+    if (!music || !btn) return;
+
+    music.volume = 0.4;
+    var started = false;
+
+    function startMusic() {
+      if (started) return;
+      music.play().then(function() {
+        started = true;
+        btn.textContent = '⏸ PAUSE';
+      }).catch(function() {});
+    }
+
+    // Try immediate autoplay
+    music.play().then(function() {
+      started = true;
+      btn.textContent = '⏸ PAUSE';
+    }).catch(function() {
+      // Blocked — start on first user interaction
+      document.addEventListener('scroll', startMusic, { once: true });
+      document.addEventListener('touchstart', startMusic, { once: true });
+      document.addEventListener('click', startMusic, { once: true });
+    });
+
+    btn.addEventListener('click', function() {
+      if (music.paused) {
+        music.play();
+        btn.textContent = '⏸ PAUSE';
+        started = true;
+      } else {
+        music.pause();
+        btn.textContent = '♪ MUSIC';
+      }
     });
   })();
 </script>
