@@ -1024,8 +1024,14 @@ section, .full-section {
   cursor: pointer;
   border-radius: 2px;
   transition: background 0.3s, color 0.3s;
+  animation: musicPulse 2s ease-in-out infinite;
 }
+.music-btn.playing { animation: none; }
 .music-btn:hover { background: rgba(255,255,255,0.2); }
+@keyframes musicPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
 
 /* ========== Keyframes ========== */
 @keyframes fadeUp {
@@ -1506,7 +1512,7 @@ section, .full-section {
   })();
 </script>
 <script>
-  // Music — autoplay on first interaction, toggle button
+  // Music — autoplay on first tap, toggle button
   (function() {
     var music = document.getElementById('bgMusic');
     var btn = document.getElementById('musicToggle');
@@ -1517,31 +1523,36 @@ section, .full-section {
 
     function startMusic() {
       if (started) return;
+      started = true;
       music.play().then(function() {
-        started = true;
         btn.textContent = '⏸ PAUSE';
-      }).catch(function() {});
+        btn.classList.add('playing');
+      }).catch(function() { started = false; });
     }
 
-    // Try immediate autoplay
+    // Try immediate autoplay first
     music.play().then(function() {
       started = true;
       btn.textContent = '⏸ PAUSE';
+      btn.classList.add('playing');
     }).catch(function() {
-      // Blocked — start on first user interaction
-      document.addEventListener('scroll', startMusic, { once: true });
-      document.addEventListener('touchstart', startMusic, { once: true });
+      // iOS/browsers block autoplay — start on first tap anywhere
+      document.addEventListener('touchend', startMusic, { once: true });
       document.addEventListener('click', startMusic, { once: true });
     });
 
-    btn.addEventListener('click', function() {
+    // Button manually toggles play/pause
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       if (music.paused) {
         music.play();
         btn.textContent = '⏸ PAUSE';
+        btn.classList.add('playing');
         started = true;
       } else {
         music.pause();
         btn.textContent = '♪ MUSIC';
+        btn.classList.remove('playing');
       }
     });
   })();
