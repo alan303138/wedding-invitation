@@ -989,6 +989,51 @@ section, .full-section {
   transform: translateY(0);
 }
 
+/* ========== Enter Overlay ========== */
+.enter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(255,255,255,0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+.enter-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.enter-overlay-names {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--brown-deep);
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+.enter-overlay-sub {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--muted);
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+.enter-overlay-btn {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--brown-deep);
+  border: 1px solid var(--brown-deep);
+  padding: 0.8rem 2.5rem;
+  background: transparent;
+  cursor: pointer;
+  animation: musicPulse 2s ease-in-out infinite;
+}
+
 /* ========== Language Toggle ========== */
 .lang-btn {
   position: fixed;
@@ -1099,6 +1144,13 @@ section, .full-section {
 </style>
 </head>
 <body>
+
+<!-- Enter Overlay -->
+<div class="enter-overlay" id="enterOverlay">
+  <p class="enter-overlay-names">Xiao Wei &amp; Chun Hou</p>
+  <p class="enter-overlay-sub">26 . 09 . 2026</p>
+  <button class="enter-overlay-btn">ENTER</button>
+</div>
 
 <!-- Navigation -->
 <nav class="nav" id="nav">
@@ -1512,43 +1564,30 @@ section, .full-section {
   })();
 </script>
 <script>
-  // Music — autoplay on first tap, toggle button
+  // Enter overlay + music start
   (function() {
+    var overlay = document.getElementById('enterOverlay');
     var music = document.getElementById('bgMusic');
     var btn = document.getElementById('musicToggle');
-    if (!music || !btn) return;
+    if (!overlay || !music || !btn) return;
 
     music.volume = 0.4;
-    var started = false;
 
-    function startMusic() {
-      if (started) return;
-      started = true;
+    overlay.addEventListener('click', function() {
+      overlay.classList.add('hide');
+      setTimeout(function() { overlay.style.display = 'none'; }, 800);
       music.play().then(function() {
         btn.textContent = '⏸ PAUSE';
         btn.classList.add('playing');
-      }).catch(function() { started = false; });
-    }
-
-    // Try immediate autoplay first
-    music.play().then(function() {
-      started = true;
-      btn.textContent = '⏸ PAUSE';
-      btn.classList.add('playing');
-    }).catch(function() {
-      // iOS/browsers block autoplay — start on first tap anywhere
-      document.addEventListener('touchend', startMusic, { once: true });
-      document.addEventListener('click', startMusic, { once: true });
+      }).catch(function() {});
     });
 
-    // Button manually toggles play/pause
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
+    // Button toggles play/pause
+    btn.addEventListener('click', function() {
       if (music.paused) {
         music.play();
         btn.textContent = '⏸ PAUSE';
         btn.classList.add('playing');
-        started = true;
       } else {
         music.pause();
         btn.textContent = '♪ MUSIC';
